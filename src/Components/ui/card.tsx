@@ -1,6 +1,11 @@
-import React from "react";
+import type { ReactNode } from "react";
 
-export function Card({ children, className = "" }) {
+type CardProps = {
+  children: ReactNode;
+  className?: string;
+};
+
+export function Card({ children, className = "" }: CardProps) {
   return (
     <div className={`bg-white p-6 rounded-xl shadow-md ${className}`}>
       {children}
@@ -8,7 +13,7 @@ export function Card({ children, className = "" }) {
   );
 }
 
-export function CardHeader({ children, className = "" }) {
+export function CardHeader({ children, className = "" }: CardProps) {
   return (
     <div className={`mb-4 ${className}`}>
       {children}
@@ -16,7 +21,7 @@ export function CardHeader({ children, className = "" }) {
   );
 }
 
-export function CardTitle({ children, className = "" }) {
+export function CardTitle({ children, className = "" }: CardProps) {
   return (
     <h2 className={`text-xl font-semibold ${className}`}>
       {children}
@@ -24,7 +29,7 @@ export function CardTitle({ children, className = "" }) {
   );
 }
 
-export function CardContent({ children, className = "" }) {
+export function CardContent({ children, className = "" }: CardProps) {
   return (
     <div className={`text-gray-700 ${className}`}>
       {children}

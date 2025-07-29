@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "../../Components/ui/button";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "../../utils";
@@ -17,7 +16,7 @@ export default function HeroSection() {
           </h1>
 
           <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-            From cutting-edge cyber security to creative entertainment
+            From cutting-edge cyber services to creative entertainment
             solutions, we provide professional services that drive your success
             forward.
           </p>

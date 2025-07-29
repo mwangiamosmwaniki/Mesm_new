@@ -1,5 +1,3 @@
-import React from "react";
-
 export function SendEmail({ to, subject, body }) {
   const handleClick = () => {
     const mailtoLink = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;

@@ -5,7 +5,7 @@ import { Input } from "../../Components/ui/input";
 import { Textarea } from "../../Components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../Components/ui/select";
 import { Star, Quote } from "lucide-react";
-import { Testimonial } from "../entities/Testimonial";
+import { Testimonial } from "../../components/entities/Testimonial";
 
 
 export default function TestimonialsSection() {

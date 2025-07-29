@@ -1,5 +1,3 @@
-import React from "react";
-
 export function Contact({ name, phone, email }) {
   return (
     <div className="bg-white p-4 rounded-lg shadow-md">
