@@ -1,10 +1,10 @@
 import Layout from "./Layout";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import CyberServices from "./pages/CyberServices";
-import Entertainment from "./pages/Entertainment";
-import GraphicsDesign from "./pages/GraphicsDesign";
-import Construction from "./pages/Construction";
+import Home from "./Pages/Home";
+import CyberServices from "./Pages/CyberServices";
+import Entertainment from "./Pages/Entertainment";
+import GraphicsDesign from "./Pages/GraphicsDesign";
+import Construction from "./Pages/Construction";
 
 export default function App() {
   return (
