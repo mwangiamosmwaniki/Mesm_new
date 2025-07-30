@@ -17,12 +17,7 @@ export default function ServicesSection() {
       title: "Cyber Services",
       description:
         "Comprehensive cybersecurity solutions to protect your digital assets and ensure business continuity.",
-      features: [
-        "Photocopy",
-        "Scanning",
-        "Lamination",
-        "Scanning",
-      ],
+      features: ["Photocopy", "Scanning", "Lamination", "Scanning"],
       link: createPageUrl("CyberServices"),
       color: "bg-blue-500",
     },
@@ -120,10 +115,10 @@ export default function ServicesSection() {
                 <Link to={service.link} className="mt-6">
                   <Button
                     variant="outline"
-                    className="w-full group-hover:bg-blue-700 group-hover:text-white group-hover:shadow-md transition-colors"
+                    className="w-full flex items-center gap-x-2 group-hover:bg-blue-700 group-hover:text-white group-hover:shadow-md transition-colors"
                   >
-                    Learn More
-                    <ArrowRight className="ml-2 w-4 h-4" />
+                    <span>Learn More</span>
+                    <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
               </CardContent>
