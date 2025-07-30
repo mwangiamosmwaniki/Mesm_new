@@ -25,7 +25,7 @@ export default function AboutSection() {
               that address their unique challenges.
             </p>
             <p className="text-[#FFFF00]">
-              From cybersecurity to construction, entertainment to graphics
+              From cyber services to construction, entertainment to graphics
               design, we bring the same level of professionalism and innovation
               to every project we undertake.
             </p>
