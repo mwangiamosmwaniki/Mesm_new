@@ -5,10 +5,9 @@ import { Menu, X, MessageCircle } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { Button } from "./Components/ui/button";
 import Logo from "./assets/images/mesm.png";
-import { FaFacebook, FaInstagram} from "react-icons/fa";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { CiLinkedin, CiYoutube } from "react-icons/ci";
-
 
 export default function Layout({ children, currentPageName }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -217,15 +216,15 @@ export default function Layout({ children, currentPageName }) {
                   rel="noopener noreferrer"
                   className="text-gray-300 hover:text-white"
                 >
-                 <FaFacebook />
+                  <FaFacebook />
                 </a>
-                                <a
-                  href="https://www.facebook.com/profile.php?id=100077753770516"
+                <a
+                  href="https://youtube.com/@amosmwangi2976?si=_WcOqBGZPGN0uHaT"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-300 hover:text-white"
                 >
-                 <CiYoutube />
+                  <CiYoutube />
                 </a>
               </div>
             </div>
