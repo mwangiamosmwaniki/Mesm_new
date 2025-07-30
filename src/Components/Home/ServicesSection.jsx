@@ -8,6 +8,7 @@ import { Button } from "../../Components/ui/button";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "../../utils";
 import { Shield, Music, Palette, Building, ArrowRight } from "lucide-react";
+import { FaBuildingShield } from "react-icons/fa6";
 
 export default function ServicesSection() {
   const services = [
@@ -54,7 +55,7 @@ export default function ServicesSection() {
       color: "bg-pink-500",
     },
     {
-      icon: Building,
+      icon: FaBuildingShield,
       title: "Construction",
       description:
         "Quality construction services from planning to completion, building your vision into reality.",
