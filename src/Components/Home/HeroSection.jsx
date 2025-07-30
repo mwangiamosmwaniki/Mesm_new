@@ -1,7 +1,8 @@
 import { Button } from "../../Components/ui/button";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "../../utils";
-import { ArrowRight, Shield, Palette, Building, Music } from "lucide-react";
+import { ArrowRight, Shield, Palette, Building, Music, } from "lucide-react";
+import { FaBuildingShield } from "react-icons/fa6";
 
 export default function HeroSection() {
   return (
@@ -75,7 +76,7 @@ export default function HeroSection() {
 
             <div className="flex flex-col items-center">
               <div className="w-16 h-16 bg-blue-700 rounded-full flex items-center justify-center mb-4">
-                <Building className="w-8 h-8 text-yellow-400" />
+                <FaBuildingShield className="w-8 h-8 text-yellow-400" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Construction</h3>
               <p className="text-blue-200 text-sm">Building Dreams</p>
