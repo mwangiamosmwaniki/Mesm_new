@@ -18,10 +18,10 @@ export default function ServicesSection() {
       description:
         "Comprehensive cybersecurity solutions to protect your digital assets and ensure business continuity.",
       features: [
-        "Network Security",
-        "Data Protection",
-        "Threat Assessment",
-        "Security Consulting",
+        "Photocopy",
+        "Scanning",
+        "Lamination",
+        "Scanning",
       ],
       link: createPageUrl("CyberServices"),
       color: "bg-blue-500",

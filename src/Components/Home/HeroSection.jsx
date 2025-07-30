@@ -1,7 +1,7 @@
 import { Button } from "../../Components/ui/button";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "../../utils";
-import { ArrowRight, Shield, Palette, Building, Music, } from "lucide-react";
+import { ArrowRight, Shield, Palette, Building, Music } from "lucide-react";
 import { FaBuildingShield } from "react-icons/fa6";
 
 export default function HeroSection() {
@@ -26,10 +26,10 @@ export default function HeroSection() {
             <Link to={createPageUrl("Home")} className="inline-block">
               <Button
                 size="lg"
-                className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-8 py-2 text-lg"
+                className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-8 py-2 text-lg flex items-center gap-2"
               >
-                Explore Our Services
-                <ArrowRight className="mx-2 w-5 h-5" />
+                <span>Explore Our Services</span>
+                <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>
 
@@ -41,7 +41,7 @@ export default function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4 text-lg"
+                className="bg-transparent border border-white text-white hover:bg-white hover:text-blue-900 px-8 py-2 text-lg"
               >
                 Get In Touch
               </Button>
@@ -55,7 +55,7 @@ export default function HeroSection() {
                 <Shield className="w-8 h-8 text-yellow-400" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Cyber Services</h3>
-              <p className="text-blue-200 text-sm">Security & Protection</p>
+              <p className="text-blue-200 text-sm">Reliability & high performance</p>
             </div>
 
             <div className="flex flex-col items-center">
