@@ -3,11 +3,19 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "../../utils";
 import { ArrowRight, Shield, Palette, Building, Music } from "lucide-react";
 import { FaBuildingShield } from "react-icons/fa6";
+import designHeroBg from "../../assets/images/bg.png"
 
 export default function HeroSection() {
   return (
     <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white overflow-hidden">
-      <div className="absolute inset-0 bg-black/20"></div>
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${designHeroBg})`,
+          opacity: 0.7,
+          zIndex: 0,
+        }}
+      ></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="text-center">
@@ -55,7 +63,9 @@ export default function HeroSection() {
                 <Shield className="w-8 h-8 text-yellow-400" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Cyber Services</h3>
-              <p className="text-blue-200 text-sm">Reliability & high performance</p>
+              <p className="text-blue-200 text-sm">
+                Reliability & high performance
+              </p>
             </div>
 
             <div className="flex flex-col items-center">
