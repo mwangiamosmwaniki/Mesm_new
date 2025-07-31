@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "../../utils";
 import { ArrowRight, Shield, Palette, Building, Music } from "lucide-react";
 import { FaBuildingShield } from "react-icons/fa6";
-import designHeroBg from "../../assets/images/bg.png"
+import designHeroBg from "../../assets/images/bg.png";
 
 export default function HeroSection() {
   return (
@@ -12,10 +12,11 @@ export default function HeroSection() {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: `url(${designHeroBg})`,
-          opacity: 0.7,
+          opacity: 0.8,
           zIndex: 0,
         }}
       ></div>
+      <div className="absolute inset-0 bg-black opacity-40 mix-blend-multiply"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="text-center">
