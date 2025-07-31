@@ -3,7 +3,13 @@ import { Card, CardContent } from "../../Components/ui/card";
 import { Button } from "../../Components/ui/button";
 import { Input } from "../../Components/ui/input";
 import { Textarea } from "../../Components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../Components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../../Components/ui/select";
 import { Phone, Mail, MessageSquare, MapPin, Clock } from "lucide-react";
 import { Contact } from "../entities/Contact";
 import { SendEmail } from "../integrations/Core";
@@ -13,42 +19,40 @@ export default function ContactSection() {
     name: "",
     email: "",
     message: "",
-    service_interest: ""
+    service_interest: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  try {
-
-    // Send email to BOTH company and you
-    await Promise.all([
-      SendEmail({
-        to: "mwangiamos703@gmail.com",
-        subject: `New Contact Form Submission from ${formData.name}`,
-        body: `
+    try {
+      // Send email to BOTH company and you
+      await Promise.all([
+        SendEmail({
+          to: "mwangiamos703@gmail.com",
+          subject: `New Contact Form Submission from ${formData.name}`,
+          body: `
           Name: ${formData.name}
           Email: ${formData.email}
-          Service Interest: ${formData.service_interest || 'General'}
+          Service Interest: ${formData.service_interest || "General"}
           Message: ${formData.message}
         `,
-      }),
-    ]);
+        }),
+      ]);
 
-    // Reset form and show success
-    setFormData({ name: "", email: "", message: "", service_interest: "" });
-    setShowSuccess(true);
-    setTimeout(() => setShowSuccess(false), 3000);
-  } catch (error) {
-    console.error("Error submitting contact form:", error);
-  } finally {
-    setIsSubmitting(false);
-  }
-};
-
+      // Reset form and show success
+      setFormData({ name: "", email: "", message: "", service_interest: "" });
+      setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 3000);
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section className="py-20 bg-white">
@@ -58,54 +62,66 @@ const handleSubmit = async (e) => {
             Get In Touch
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to start your project? We'd love to hear from you. Contact us today 
-            to discuss how we can help bring your vision to life.
+            Ready to start your project? We'd love to hear from you. Contact us
+            today to discuss how we can help bring your vision to life.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
-              <div className="space-y-6">              
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                Contact Information
+              </h3>
+              <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
                     <Mail className="w-6 h-6 text-green-600" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900">Email</h4>
-                    <a href="mailto:info@mesmcompany.com" className="text-green-600 hover:text-green-700">
+                    <a
+                      href="mailto:info@mesmcompany.com"
+                      className="text-green-600 hover:text-green-700"
+                    >
                       info@mesmcompany.com
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
                     <Phone className="w-6 h-6 text-purple-600" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900">Phone</h4>
-                    <a href="tel:+254715825808" className="text-purple-600 hover:text-purple-700">
+                    <a
+                      href="tel:+254715825808"
+                      className="text-purple-600 hover:text-purple-700"
+                    >
                       +254 715 825 808
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
                     <Clock className="w-6 h-6 text-yellow-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Business Hours</h4>
-                    <p className="text-gray-600">Monday - Saturday: 9:00 AM - 10:00 PM</p>
+                    <h4 className="font-semibold text-gray-900">
+                      Business Hours
+                    </h4>
+                    <p className="text-gray-600">
+                      Monday - Saturday: 9:00 AM - 10:00 PM
+                    </p>
                     <p className="text-gray-600">Sunday: 11:00 AM - 10:00 PM</p>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             {/* Map */}
             <div className="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
               <iframe
@@ -120,18 +136,22 @@ const handleSubmit = async (e) => {
               ></iframe>
             </div>
           </div>
-          
+
           {/* Contact Form */}
           <Card className="bg-slate-200">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h3>
-              
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                Send Us a Message
+              </h3>
+
               {showSuccess && (
                 <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-green-800">Thank you for your message! We'll get back to you soon.</p>
+                  <p className="text-green-800">
+                    Thank you for your message! We'll get back to you soon.
+                  </p>
                 </div>
               )}
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -141,12 +161,14 @@ const handleSubmit = async (e) => {
                     <Input
                       type="text"
                       value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
                       required
                       className="w-full"
                     />
                   </div>
-                  
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Your Email *
@@ -154,48 +176,60 @@ const handleSubmit = async (e) => {
                     <Input
                       type="email"
                       value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
                       required
                       className="w-full"
                     />
                   </div>
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Service Interest
                   </label>
                   <Select
                     value={formData.service_interest}
-                    onValueChange={(value) => setFormData({...formData, service_interest: value})}
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, service_interest: value })
+                    }
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select a service (optional)" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="cyber_services">Cyber Services</SelectItem>
-                      <SelectItem value="entertainment">Entertainment</SelectItem>
-                      <SelectItem value="graphics_design">Graphics Design</SelectItem>
+                      <SelectItem value="cyber_services">
+                        Cyber Services
+                      </SelectItem>
+                      <SelectItem value="entertainment">
+                        Entertainment
+                      </SelectItem>
+                      <SelectItem value="graphics_design">
+                        Graphics Design
+                      </SelectItem>
                       <SelectItem value="construction">Construction</SelectItem>
                       <SelectItem value="general">General Inquiry</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Your Message *
                   </label>
                   <Textarea
                     value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
                     rows={4}
                     required
                     className="w-full"
                     placeholder="Tell us about your project or inquiry..."
                   />
                 </div>
-                
+
                 <Button
                   type="submit"
                   disabled={isSubmitting}
