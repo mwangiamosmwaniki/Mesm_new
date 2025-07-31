@@ -5,6 +5,7 @@ import {
   CardTitle,
 } from "../Components/ui/card";
 import { Button } from "../Components/ui/button";
+import officeImg from "../assets/images/office.jpg";
 import {
   Shield,
   Lock,
@@ -112,34 +113,40 @@ export default function CyberServices() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="w-20 h-20 bg-blue-700 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Laptop className="w-16 h-16 text-yellow-400" />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Cyber & Office Services
-            </h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
-              Get all your printing, photocopying, lamination, and online
-              service needs handled quickly and professionally. We make your
-              everyday tasks easier and faster.
-            </p>
+      <section className="relative h-[36rem] flex items-center justify-center text-white overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${officeImg})`,
+          opacity: 0.9,
+          zIndex: 0,
+        }}
+      ></div>
 
-            <a
-              href="https://wa.me/254715825808"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button
-                size="lg"
-                className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold"
-              >
-                Request a service
-              </Button>
-            </a>
+        <div className="absolute inset-0 bg-black opacity-40 mix-blend-multiply"></div>
+
+        <div className="relative z-10 text-center px-4 max-w-3xl">
+          <div className="w-20 h-20 bg-blue-700 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Laptop className="w-16 h-16 text-yellow-400" />
           </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            Cyber & Office Services
+          </h1>
+          <p className="text-xl text-blue-100 mb-8">
+            Get all your printing, photocopying, lamination, and online service
+            needs handled quickly and professionally. We make your everyday
+            tasks easier and faster.
+          </p>
+
+          <a
+            href="https://wa.me/254715825808"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
+              Request a service
+            </Button>
+          </a>
         </div>
       </section>
 

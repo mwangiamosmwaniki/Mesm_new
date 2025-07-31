@@ -6,6 +6,7 @@ import {
 } from "../Components/ui/card";
 import { Button } from "../Components/ui/button";
 import { Building, Home, Wrench, Hammer, HardHat, Truck } from "lucide-react";
+import buildinBg from "../assets/images/buildings.png";
 
 export default function Construction() {
   const services = [
@@ -87,8 +88,17 @@ export default function Construction() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-orange-900 to-yellow-800 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative text-white py-20 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center pointer-events-none"
+          style={{
+            backgroundImage: `url(${buildinBg})`,
+            // opacity: 0.5,
+            zIndex: 0,
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-black/50 z-0 pointer-events-none"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="w-20 h-20 bg-orange-700 rounded-full flex items-center justify-center mx-auto mb-6">
               <Building className="w-10 h-10 text-yellow-400" />
