@@ -26,9 +26,10 @@ export default function HeroSection() {
           </h1>
 
           <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-            From cutting-edge cyber services to creative entertainment
-            solutions, we provide professional services that drive your success
-            forward.
+            MESM provides reliable engineering, cybersecurity, and creative tech
+            solutions — including software development, system maintenance, and
+            digital entertainment — helping startups and enterprises succeed in
+            the modern digital landscape.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
