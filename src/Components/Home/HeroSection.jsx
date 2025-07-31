@@ -32,7 +32,7 @@ export default function HeroSection() {
             the modern digital landscape.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <div className="flex flex-col items-center sm:flex-row sm:justify-center gap-4 mb-12">
             <Link to={createPageUrl("Home")} className="inline-block">
               <Button
                 size="lg"
