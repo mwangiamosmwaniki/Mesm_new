@@ -122,7 +122,7 @@ const handleSubmit = async (e) => {
           </div>
           
           {/* Contact Form */}
-          <Card>
+          <Card className="bg-slate-300">
             <CardContent className="p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h3>
               
