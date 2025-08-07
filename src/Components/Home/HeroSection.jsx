@@ -33,7 +33,7 @@ export default function HeroSection() {
           </p>
 
           <div className="flex flex-col items-center sm:flex-row sm:justify-center gap-4 mb-12">
-            <Link to={createPageUrl("Home")} className="inline-block">
+            <Link to={createPageUrl("Gallery")} className="inline-block">
               <Button
                 size="lg"
                 className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-8 py-2 text-lg flex items-center gap-2"

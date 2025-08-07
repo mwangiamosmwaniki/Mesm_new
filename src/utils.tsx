@@ -3,7 +3,11 @@ type PageName =
   | "CyberServices"
   | "Entertainment"
   | "GraphicsDesign"
-  | "Construction";
+  | "Construction"
+  | "Gallery"
+  | "AboutSection"
+  | "FAQs"
+  | "ContactSection";
 
 export function createPageUrl(pageName: PageName): string {
   switch (pageName) {
@@ -17,5 +21,13 @@ export function createPageUrl(pageName: PageName): string {
       return "/graphicsdesign";
     case "Construction":
       return "/construction";
+    case "Gallery":
+      return "/gallery";
+    case "AboutSection":
+      return "/about";
+    case "FAQs":
+      return "/faqs";
+    case "ContactSection":
+      return "/contact";
   }
 }
