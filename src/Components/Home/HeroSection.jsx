@@ -9,13 +9,14 @@ export default function HeroSection() {
   return (
     <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center md:bg-contain md:bg-no-repeat"
         style={{
           backgroundImage: `url(${designHeroBg})`,
           opacity: 0.8,
           zIndex: 0,
         }}
       ></div>
+
       <div className="absolute inset-0 bg-black opacity-40 mix-blend-multiply"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">

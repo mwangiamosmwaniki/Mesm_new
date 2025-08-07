@@ -91,7 +91,7 @@ export default function GraphicsDesign() {
       {/* Hero Section */}
       <section className="relative text-white py-20 overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center md:bg-contain md:bg-no-repeat"
           style={{
             backgroundImage: `url(${designHeroBg})`,
             zIndex: 0,
