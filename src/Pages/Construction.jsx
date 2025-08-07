@@ -90,7 +90,7 @@ export default function Construction() {
       {/* Hero Section */}
       <section className="relative text-white py-20 overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center pointer-events-none"
+          className="absolute inset-0 bg-cover bg-center md:bg-contain md:bg-no-repeat pointer-events-none"
           style={{
             backgroundImage: `url(${buildinBg})`,
             // opacity: 0.5,
