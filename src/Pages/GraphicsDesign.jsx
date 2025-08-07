@@ -129,8 +129,61 @@ export default function GraphicsDesign() {
         </div>
       </section>
 
+      {/* Services Grid */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Our Design Services
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              We offer comprehensive graphic design solutions to help your brand stand out in today's competitive market.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <Card
+                key={index}
+                className="h-full hover:shadow-xl transition-shadow group"
+              >
+                <CardHeader className="text-center">
+                  <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                    <service.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <CardTitle className="text-xl font-bold text-gray-900">
+                    {service.title}
+                  </CardTitle>
+                </CardHeader>
+
+                <CardContent>
+                  <p className="text-gray-600 mb-6">{service.description}</p>
+
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-gray-900">
+                      Key Features:
+                    </h4>
+                    <ul className="space-y-1">
+                      {service.features.map((feature, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-center text-sm text-gray-600"
+                        >
+                          <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Design Process */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">

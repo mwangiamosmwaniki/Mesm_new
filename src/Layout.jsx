@@ -1,34 +1,39 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { createPageUrl } from "./utils";
-import { Menu, X, MessageCircle } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
-import { Button } from "./Components/ui/button";
-import Logo from "./assets/images/mesm.png";
-import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { Menu, X } from "lucide-react";
+import { FaWhatsapp, FaFacebook, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { CiLinkedin, CiYoutube } from "react-icons/ci";
+import Logo from "./assets/images/mesm.png";
 
-export default function Layout({ children, currentPageName }) {
+export default function Layout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const navigationItems = [
-    { name: "Home", path: createPageUrl("Home") },
+  const serviceItems = [
     { name: "Cyber Services", path: createPageUrl("CyberServices") },
     { name: "Entertainment", path: createPageUrl("Entertainment") },
     { name: "Graphics Design", path: createPageUrl("GraphicsDesign") },
     { name: "Construction", path: createPageUrl("Construction") },
   ];
 
+  const scrollLinks = [
+    { name: "About", anchor: "#about" },
+    { name: "FAQs", anchor: "#faqs" },
+    { name: "Contact", anchor: "#contact" },
+  ];
+
   return (
     <div className="min-h-screen bg-white">
       <style>
         {`
+          html {
+            scroll-behavior: smooth;
+          }
           :root {
             --primary-navy: #1e3a8a;
             --primary-gold: #f59e0b;
@@ -46,10 +51,7 @@ export default function Layout({ children, currentPageName }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <Link
-              to={createPageUrl("Home")}
-              className="flex items-center space-x-2"
-            >
+            <Link to="/" className="flex items-center space-x-2">
               <img
                 src={Logo}
                 alt="MESM Logo"
@@ -61,32 +63,72 @@ export default function Layout({ children, currentPageName }) {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-8">
-              {navigationItems.map((item) => (
-                <Link
+            <nav className="hidden md:flex space-x-4 items-center relative">
+              <Link
+                to="/"
+                className={`text-gray-700 hover:text-blue-900 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  location.pathname === "/" ? "text-blue-900 bg-blue-50" : ""
+                }`}
+              >
+                Home
+              </Link>
+
+              {/* Services Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => setIsServicesOpen(true)}
+                onMouseLeave={() => setIsServicesOpen(false)}
+              >
+                <button className="text-gray-700 hover:text-blue-900 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1 transition-colors">
+                  Services
+                  <svg
+                    className="w-4 h-4 mt-[2px]"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {isServicesOpen && (
+                  <div className="absolute top-full mt-1 w-48 bg-white shadow-lg rounded-md py-2 z-50 border">
+                    {serviceItems.map((item) => (
+                      <Link
+                        key={item.name}
+                        to={item.path}
+                        className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ${
+                          location.pathname === item.path
+                            ? "bg-blue-50 text-blue-900"
+                            : ""
+                        }`}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Scroll Sections: About, FAQs, Contact */}
+              {scrollLinks.map((item) => (
+                <a
                   key={item.name}
-                  to={item.path}
-                  className={`text-gray-700 hover:text-blue-900 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    location.pathname === item.path
-                      ? "text-blue-900 bg-blue-50"
-                      : ""
-                  }`}
+                  href={item.anchor}
+                  className="text-gray-700 hover:text-blue-900 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   {item.name}
-                </Link>
+                </a>
               ))}
             </nav>
 
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
-              className="md:hidden p-2 rounded-md text-gray-700 hover:text-blue-900 focus:outline-none"
+              className="md:hidden p-2 rounded-md text-gray-700 hover:text-blue-900"
             >
-              {isMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
@@ -95,29 +137,49 @@ export default function Layout({ children, currentPageName }) {
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigationItems.map((item) => (
-                <Link
+              <Link
+                to="/"
+                onClick={() => setIsMenuOpen(false)}
+                className={`block px-3 py-2 rounded-md text-base font-medium ${
+                  location.pathname === "/" ? "text-blue-900 bg-blue-50" : "text-gray-700 hover:text-blue-900 hover:bg-gray-50"
+                }`}
+              >
+                Home
+              </Link>
+
+              <div className="px-3">
+                <p className="text-gray-700 font-semibold mt-4 mb-2">Services</p>
+                {serviceItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-900 hover:bg-gray-50"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+
+              {scrollLinks.map((item) => (
+                <a
                   key={item.name}
-                  to={item.path}
+                  href={item.anchor}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                    location.pathname === item.path
-                      ? "text-blue-900 bg-blue-50"
-                      : "text-gray-700 hover:text-blue-900 hover:bg-gray-50"
-                  }`}
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-900 hover:bg-gray-50"
                 >
                   {item.name}
-                </Link>
+                </a>
               ))}
             </div>
           </div>
         )}
       </header>
 
-      {/* Main Content */}
+      {/* Main */}
       <main className="flex-1">{children}</main>
 
-      {/* WhatsApp Float Button */}
+      {/* WhatsApp Button */}
       <a
         href="https://wa.me/254715825808"
         target="_blank"
@@ -148,82 +210,32 @@ export default function Layout({ children, currentPageName }) {
             <div>
               <h3 className="text-lg font-semibold mb-4">Services</h3>
               <ul className="space-y-2 text-gray-300">
-                <li>
-                  <Link
-                    to={createPageUrl("CyberServices")}
-                    className="hover:text-white"
-                  >
-                    Cyber Services
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to={createPageUrl("Entertainment")}
-                    className="hover:text-white"
-                  >
-                    Entertainment
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to={createPageUrl("GraphicsDesign")}
-                    className="hover:text-white"
-                  >
-                    Graphics Design
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to={createPageUrl("Construction")}
-                    className="hover:text-white"
-                  >
-                    Construction
-                  </Link>
-                </li>
+                {serviceItems.map((item) => (
+                  <li key={item.name}>
+                    <Link to={item.path} className="hover:text-white">
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
             <div>
               <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
               <div className="flex space-x-4">
-                <a
-                  href="https://www.instagram.com/mwangiamos15"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-white"
-                >
+                <a href="https://www.instagram.com/mwangiamos15" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
                   <FaInstagram />
                 </a>
-                <a
-                  href="https://x.com/Amoh_20"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-white"
-                >
+                <a href="https://x.com/Amoh_20" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
                   <FaXTwitter />
                 </a>
-                <a
-                  href="https://www.linkedin.com/in/amos-mwangi-7570a7261"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-white"
-                >
+                <a href="https://www.linkedin.com/in/amos-mwangi-7570a7261" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
                   <CiLinkedin />
                 </a>
-                <a
-                  href="https://www.facebook.com/profile.php?id=100077753770516"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-white"
-                >
+                <a href="https://www.facebook.com/profile.php?id=100077753770516" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
                   <FaFacebook />
                 </a>
-                <a
-                  href="https://youtube.com/@amosmwangi2976?si=_WcOqBGZPGN0uHaT"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-white"
-                >
+                <a href="https://youtube.com/@amosmwangi2976?si=_WcOqBGZPGN0uHaT" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
                   <CiYoutube />
                 </a>
               </div>

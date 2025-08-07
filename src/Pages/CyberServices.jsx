@@ -155,11 +155,11 @@ export default function CyberServices() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Cybersecurity Services
+              Our Cyberservices Services
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We provide end-to-end cybersecurity solutions to protect your
-              business from evolving digital threats.
+              We provide end-to-end cyber services solutions to take your
+              business to the next.
             </p>
           </div>
 
@@ -205,7 +205,7 @@ export default function CyberServices() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
