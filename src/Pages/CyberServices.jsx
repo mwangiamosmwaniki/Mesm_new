@@ -115,7 +115,7 @@ export default function CyberServices() {
       {/* Hero Section */}
       <section className="relative h-[36rem] flex items-center justify-center text-white overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center md:bg-contain md:bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center "
         style={{
           backgroundImage: `url(${officeImg})`,
           opacity: 0.9,

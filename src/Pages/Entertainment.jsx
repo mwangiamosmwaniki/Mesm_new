@@ -102,7 +102,7 @@ export default function Entertainment() {
 
       <section className="relative h-[600px] text-white overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center md:bg-contain md:bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${bgImage})` }}
         ></div>
 
