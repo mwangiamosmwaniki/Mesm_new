@@ -1,111 +1,55 @@
-import React, { ReactNode, useState } from "react";
+import type { ReactNode, SelectHTMLAttributes, ButtonHTMLAttributes } from "react";
 
-/* ---------------- SELECT ---------------- */
 type SelectProps = {
   children: ReactNode;
   className?: string;
-  value?: string;
-  onValueChange?: (value: string) => void;
-};
+} & SelectHTMLAttributes<HTMLSelectElement>;
 
-export function Select({
-  children,
-  className = "",
-  value,
-  onValueChange,
-}: SelectProps) {
-  const [open, setOpen] = useState(false);
-  const [label, setLabel] = useState<string | undefined>(undefined);
-
-  const toggle = () => setOpen((prev) => !prev);
-
-  const selectValue = (val: string, lbl: string) => {
-    onValueChange?.(val);
-    setLabel(lbl);
-    setOpen(false);
-  };
-
+export function Select({ children, className = "", ...props }: SelectProps) {
   return (
-    <div className={`relative inline-block w-full ${className}`}>
-      {React.Children.map(children, (child) => {
-        if (!React.isValidElement(child)) return child;
-        return React.cloneElement(child, {
-          open,
-          value,
-          label,
-          toggle,
-          selectValue,
-        });
-      })}
-    </div>
+    <select className={`border rounded px-3 py-2 ${className}`} {...props}>
+      {children}
+    </select>
   );
 }
 
-/* ---------------- TRIGGER ---------------- */
-type SelectTriggerProps = {
-  children?: ReactNode;
-  open?: boolean;
-  toggle?: () => void;
+type SelectItemProps = {
+  value: string;
+  children: ReactNode;
 };
 
-export function SelectTrigger({ children, open, toggle }: SelectTriggerProps) {
+export function SelectItem({ value, children }: SelectItemProps) {
+  return <option value={value}>{children}</option>;
+}
+
+type SelectTriggerProps = {
+  children: ReactNode;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
+
+export function SelectTrigger({ children, ...props }: SelectTriggerProps) {
   return (
-    <button
-      type="button"
-      onClick={toggle}
-      aria-haspopup="listbox"
-      aria-expanded={open}
-      className="border px-3 py-2 rounded w-full text-left bg-white"
-    >
+    <button {...props} className="border px-3 py-2 rounded w-full text-left">
       {children}
     </button>
   );
 }
 
-/* ---------------- CONTENT ---------------- */
 type SelectContentProps = {
   children: ReactNode;
-  open?: boolean;
 };
 
-export function SelectContent({ children, open }: SelectContentProps) {
-  if (!open) return null;
+export function SelectContent({ children }: SelectContentProps) {
   return (
-    <div
-      role="listbox"
-      className="bg-white border rounded shadow-md mt-2 absolute w-full z-50"
-    >
+    <div className="bg-white border rounded shadow-md mt-2 absolute z-50">
       {children}
     </div>
   );
 }
 
-/* ---------------- ITEM ---------------- */
-type SelectItemProps = {
-  value: string;
-  children: ReactNode;
-  selectValue?: (val: string, label: string) => void;
-};
-
-export function SelectItem({ value, children, selectValue }: SelectItemProps) {
-  return (
-    <div
-      role="option"
-      onClick={() => selectValue?.(value, String(children))}
-      className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-    >
-      {children}
-    </div>
-  );
-}
-
-/* ---------------- VALUE ---------------- */
 type SelectValueProps = {
-  value?: string;
-  label?: string;
-  placeholder?: string;
+  children: ReactNode;
 };
 
-export function SelectValue({ value, label, placeholder }: SelectValueProps) {
-  return <span>{label || placeholder}</span>;
+export function SelectValue({ children }: SelectValueProps) {
+  return <span>{children}</span>;
 }
