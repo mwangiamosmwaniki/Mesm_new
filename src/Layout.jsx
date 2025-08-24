@@ -47,7 +47,7 @@ export default function Layout({ children }) {
       </style>
 
       {/* Header */}
-      <header className="bg-white shadow-lg sticky top-0 z-50">
+      <header className="bg-white shadow shadow-slate-300 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -66,7 +66,7 @@ export default function Layout({ children }) {
             <nav className="hidden md:flex space-x-4 items-center relative">
               <Link
                 to="/"
-                className={`text-gray-700 hover:text-blue-900 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                className={`text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   location.pathname === "/" ? "text-blue-900 bg-blue-50" : ""
                 }`}
               >
@@ -79,7 +79,7 @@ export default function Layout({ children }) {
                 onMouseEnter={() => setIsServicesOpen(true)}
                 onMouseLeave={() => setIsServicesOpen(false)}
               >
-                <button className="text-gray-700 hover:text-blue-900 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1 transition-colors">
+                <button className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1 transition-colors">
                   Services
                   <svg
                     className="w-4 h-4 mt-[2px]"
@@ -93,12 +93,12 @@ export default function Layout({ children }) {
                 </button>
 
                 {isServicesOpen && (
-                  <div className="absolute top-full mt-1 w-48 bg-white shadow-lg rounded-md py-2 z-50 border">
+                  <div className="absolute top-full w-48 bg-white shadow-lg rounded-md py-2 z-50 border">
                     {serviceItems.map((item) => (
                       <Link
                         key={item.name}
                         to={item.path}
-                        className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ${
+                        className={`block px-4 py-2 text-sm text-gray-700 hover:text-red-600 hover:bg-gray-100 ${
                           location.pathname === item.path
                             ? "bg-blue-50 text-blue-900"
                             : ""
@@ -116,7 +116,7 @@ export default function Layout({ children }) {
                 <a
                   key={item.name}
                   href={item.anchor}
-                  className="text-gray-700 hover:text-blue-900 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   {item.name}
                 </a>
