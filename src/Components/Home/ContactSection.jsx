@@ -30,7 +30,7 @@ const handleSubmit = async (e) => {
 
   try {
     // Call backend API directly
-    const response = await fetch("https://mesm-server-x2rr.onrender.com", {
+    const response = await fetch("https://mesm-server-x2rr.onrender.com/send-email", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
