@@ -24,35 +24,36 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    try {
-      // Send email to BOTH company and you
-      await Promise.all([
-        SendEmail({
-          to: "mwangiamos703@gmail.com",
-          subject: `New Contact Form Submission from ${formData.name}`,
-          body: `
-          Name: ${formData.name}
-          Email: ${formData.email}
-          Service Interest: ${formData.service_interest || "General"}
-          Message: ${formData.message}
-        `,
-        }),
-      ]);
+  try {
+    // Call backend API directly
+    const response = await fetch("https://mesm-server-x2rr.onrender.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
 
+    const result = await response.json();
+
+    if (result.success) {
       // Reset form and show success
       setFormData({ name: "", email: "", message: "", service_interest: "" });
       setShowSuccess(true);
       setTimeout(() => setShowSuccess(false), 3000);
-    } catch (error) {
-      console.error("Error submitting contact form:", error);
-    } finally {
-      setIsSubmitting(false);
+    } else {
+      console.error("Backend error:", result.error);
+      alert("Failed to send message. Please try again later.");
     }
-  };
+  } catch (error) {
+    console.error("Error submitting contact form:", error);
+    alert("Something went wrong. Please try again later.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <section className="py-20 bg-white" id="contact">
