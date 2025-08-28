@@ -7,7 +7,7 @@ type SelectProps = {
 
 export function Select({ children, className = "", ...props }: SelectProps) {
   return (
-    <select className={`border rounded px-3 py-2 ${className}`} {...props}>
+    <select className={`border rounded px-3 py-2 cursor-pointer ${className}`} {...props}>
       {children}
     </select>
   );
@@ -28,7 +28,7 @@ type SelectTriggerProps = {
 
 export function SelectTrigger({ children, ...props }: SelectTriggerProps) {
   return (
-    <button {...props} className="border px-3 py-2 rounded w-full text-left">
+    <button {...props} className="border px-3 py-2 rounded w-full text-left cursor-pointer">
       {children}
     </button>
   );

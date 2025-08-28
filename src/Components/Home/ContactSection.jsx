@@ -24,36 +24,39 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  try {
-    // Call backend API directly
-    const response = await fetch("https://mesm-server-x2rr.onrender.com/send-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+    try {
+      // Call backend API directly
+      const response = await fetch(
+        "https://mesm-server-x2rr.onrender.com/send-email",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
 
-    const result = await response.json();
+      const result = await response.json();
 
-    if (result.success) {
-      // Reset form and show success
-      setFormData({ name: "", email: "", message: "", service_interest: "" });
-      setShowSuccess(true);
-      setTimeout(() => setShowSuccess(false), 3000);
-    } else {
-      console.error("Backend error:", result.error);
-      alert("Failed to send message. Please try again later.");
+      if (result.success) {
+        // Reset form and show success
+        setFormData({ name: "", email: "", message: "", service_interest: "" });
+        setShowSuccess(true);
+        setTimeout(() => setShowSuccess(false), 3000);
+      } else {
+        console.error("Backend error:", result.error);
+        alert("Failed to send message. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+      alert("Something went wrong. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
     }
-  } catch (error) {
-    console.error("Error submitting contact form:", error);
-    alert("Something went wrong. Please try again later.");
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+  };
 
   return (
     <section className="py-20 bg-white" id="contact">
@@ -192,26 +195,22 @@ const handleSubmit = async (e) => {
                   </label>
                   <Select
                     value={formData.service_interest}
-                    onValueChange={(value) =>
-                      setFormData({ ...formData, service_interest: value })
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        service_interest: e.target.value,
+                      })
                     }
                   >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a service (optional)" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="cyber_services">
-                        Cyber Services
-                      </SelectItem>
-                      <SelectItem value="entertainment">
-                        Entertainment
-                      </SelectItem>
-                      <SelectItem value="graphics_design">
-                        Graphics Design
-                      </SelectItem>
-                      <SelectItem value="construction">Construction</SelectItem>
-                      <SelectItem value="general">General Inquiry</SelectItem>
-                    </SelectContent>
+                    <SelectItem value="cyber_services">
+                      Cyber Services
+                    </SelectItem>
+                    <SelectItem value="entertainment">Entertainment</SelectItem>
+                    <SelectItem value="graphics_design">
+                      Graphics Design
+                    </SelectItem>
+                    <SelectItem value="construction">Construction</SelectItem>
+                    <SelectItem value="general">General Inquiry</SelectItem>
                   </Select>
                 </div>
 
