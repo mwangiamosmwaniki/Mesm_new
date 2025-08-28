@@ -89,26 +89,25 @@ export default function GraphicsDesign() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative text-white py-20 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${designHeroBg})`,
-            zIndex: 0,
-          }}
-        ></div>
-        <div className="absolute inset-0 bg-black/50 z-0 pointer-events-none"></div>
+      {/* Hero Section */}
+      <section className="relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] w-full overflow-hidden">
+        {/* Background Image */}
+        <img
+          src={designHeroBg}
+          alt="Graphics Design Hero"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
 
-        {/* Content container */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="w-20 h-20 bg-pink-700 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Palette className="w-10 h-10 text-yellow-400" />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/40"></div>
+
+        {/* Content */}
+        <div className="relative z-10 flex items-center justify-center h-full text-center px-4">
+          <div>
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">
               Graphics Design Services
             </h1>
-            <p className="text-xl text-orange-100 max-w-3xl mx-auto mb-8">
+            <p className="text-lg md:text-xl text-orange-100 max-w-3xl mx-auto mb-4">
               Transform your ideas into stunning visual designs that capture
               attention, communicate effectively, and leave a lasting impact on
               your audience.
@@ -137,7 +136,8 @@ export default function GraphicsDesign() {
               Our Design Services
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We offer comprehensive graphic design solutions to help your brand stand out in today's competitive market.
+              We offer comprehensive graphic design solutions to help your brand
+              stand out in today's competitive market.
             </p>
           </div>
 
