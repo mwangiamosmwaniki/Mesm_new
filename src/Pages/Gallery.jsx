@@ -30,14 +30,13 @@ function Gallery() {
     {
       title: "Event Setup",
       description: "Stage and lighting setup for a corporate event.",
-      image:
-        "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=800&q=80",
+      image: "src/assets/images/2.jpg",
     },
     {
       title: "Custom Design",
       description: "Tailor-made design solutions for clients.",
       image:
-        "https://images.unsplash.com/photo-1612433568264-0b3c86517c21?auto=format&fit=crop&w=800&q=80",
+        "src/assets/images/wsholp2.jpg",
     },
   ];
 

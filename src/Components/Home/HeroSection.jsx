@@ -27,7 +27,7 @@ export default function HeroSection() {
           </h1>
 
           <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-            MESM provides reliable engineering, cybersecurity, and creative tech
+            MESM provides reliable engineering, cyber services, and creative tech
             solutions — including software development, system maintenance, and
             digital entertainment — helping startups and enterprises succeed in
             the modern digital landscape.
@@ -39,7 +39,7 @@ export default function HeroSection() {
                 size="lg"
                 className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-8 py-2 text-lg flex items-center gap-2"
               >
-                <span>Explore Our Services</span>
+                <span>See Our work</span>
                 <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>
