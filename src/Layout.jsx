@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { createPageUrl } from "./utils";
 import { Menu, X } from "lucide-react";
 import { FaWhatsapp, FaFacebook, FaInstagram } from "react-icons/fa";
@@ -10,7 +10,9 @@ import Logo from "./assets/images/mesm.png";
 export default function Layout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+
   const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -21,11 +23,21 @@ export default function Layout({ children }) {
     { name: "Construction", path: createPageUrl("Construction") },
   ];
 
-  const scrollLinks = [
-    { name: "About", anchor: "#about" },
-    { name: "FAQs", anchor: "#faqs" },
-    { name: "Contact", anchor: "#contact" },
+  const pageLinks = [
+    { name: "About", path: "/about" },
+    { name: "FAQs", path: "/faqs" },
+    { name: "Contact", path: "/contact" },
   ];
+
+  // Navigate to route, scroll to top if already there
+  const goToPage = (path) => {
+    setIsMenuOpen(false); // close mobile menu
+    if (location.pathname !== path) {
+      navigate(path);
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -52,14 +64,8 @@ export default function Layout({ children }) {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2">
-              <img
-                src={Logo}
-                alt="MESM Logo"
-                className="w-10 h-10 rounded object-cover"
-              />
-              <span className="text-xl font-bold text-gray-900">
-                MESM Company Ltd
-              </span>
+              <img src={Logo} alt="MESM Logo" className="w-10 h-10 rounded object-cover" />
+              <span className="text-xl font-bold text-gray-900">MESM Company Ltd</span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -81,13 +87,7 @@ export default function Layout({ children }) {
               >
                 <button className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1 transition-colors">
                   Services
-                  <svg
-                    className="w-4 h-4 mt-[2px]"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg className="w-4 h-4 mt-[2px]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
@@ -99,9 +99,7 @@ export default function Layout({ children }) {
                         key={item.name}
                         to={item.path}
                         className={`block px-4 py-2 text-sm text-gray-700 hover:text-red-600 hover:bg-gray-100 ${
-                          location.pathname === item.path
-                            ? "bg-blue-50 text-blue-900"
-                            : ""
+                          location.pathname === item.path ? "bg-blue-50 text-blue-900" : ""
                         }`}
                       >
                         {item.name}
@@ -111,23 +109,20 @@ export default function Layout({ children }) {
                 )}
               </div>
 
-              {/* Scroll Sections: About, FAQs, Contact */}
-              {scrollLinks.map((item) => (
-                <a
+              {/* Page Links */}
+              {pageLinks.map((item) => (
+                <button
                   key={item.name}
-                  href={item.anchor}
+                  onClick={() => goToPage(item.path)}
                   className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   {item.name}
-                </a>
+                </button>
               ))}
             </nav>
 
             {/* Mobile Menu Button */}
-            <button
-              onClick={toggleMenu}
-              className="md:hidden p-2 rounded-md text-gray-700 hover:text-blue-900"
-            >
+            <button onClick={toggleMenu} className="md:hidden p-2 rounded-md text-gray-700 hover:text-blue-900">
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
@@ -161,15 +156,14 @@ export default function Layout({ children }) {
                 ))}
               </div>
 
-              {scrollLinks.map((item) => (
-                <a
+              {pageLinks.map((item) => (
+                <button
                   key={item.name}
-                  href={item.anchor}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => goToPage(item.path)}
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-900 hover:bg-gray-50"
                 >
                   {item.name}
-                </a>
+                </button>
               ))}
             </div>
           </div>
@@ -195,15 +189,10 @@ export default function Layout({ children }) {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
-                <img
-                  src={Logo}
-                  alt="MESM Logo"
-                  className="w-10 h-10 rounded object-cover"
-                />
+                <img src={Logo} alt="MESM Logo" className="w-10 h-10 rounded object-cover" />
               </div>
               <p className="text-gray-300 mb-4">
-                Professional services across multiple sectors, delivering
-                innovation and excellence.
+                Professional services across multiple sectors, delivering innovation and excellence.
               </p>
             </div>
 

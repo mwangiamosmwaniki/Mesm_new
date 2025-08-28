@@ -10,7 +10,7 @@ import { FaFilm } from "react-icons/fa6";
 import { PiFilmStripDuotone } from "react-icons/pi";
 import { ImFilm } from "react-icons/im";
 import { IoGameController } from "react-icons/io5";
-import bgImage from "../assets/images/entertainments.png";
+import bgImage from "../assets/images/enter.png";
 
 export default function Entertainment() {
   const services = [
@@ -100,23 +100,24 @@ export default function Entertainment() {
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
 
-      <section className="relative h-[600px] text-white overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${bgImage})` }}
-        ></div>
+      <section className="relative h-[400px] md:h-[500px] w-full overflow-hidden">
+        {/* Background Image */}
+        <img
+          src={bgImage}
+          alt="Entertainment Hero"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
 
-        <div className="absolute inset-0 bg-black opacity-60"></div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/60"></div>
 
+        {/* Content */}
         <div className="relative z-10 flex items-center justify-center h-full text-center px-4">
           <div>
-            {/* <div className="w-20 h-20 bg-purple-700 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Music className="w-10 h-10 text-yellow-400" />
-            </div> */}
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">
               Entertainment Services
             </h1>
-            <p className="text-xl text-purple-100 max-w-3xl mx-auto mb-8">
+            <p className="text-lg md:text-xl text-purple-100 max-w-3xl mx-auto mb-6">
               From event planning to music production, we create unforgettable
               experiences that bring your vision to life with creativity and
               professionalism.

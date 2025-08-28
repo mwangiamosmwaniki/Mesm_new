@@ -88,25 +88,27 @@ export default function Construction() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative text-white py-20 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${buildinBg})`,
-            // opacity: 0.5,
-            zIndex: 0,
-          }}
-        ></div>
-        <div className="absolute inset-0 bg-black/50 z-0 pointer-events-none"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
+      <section className="relative h-[380px] sm:h-[400px] md:h-[600px] lg:h-[550px] w-full overflow-hidden">
+        {/* Background Image */}
+        <img
+          src={buildinBg}
+          alt="Construction Services Hero"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/40"></div>
+
+        {/* Content */}
+        <div className="relative z-10 flex items-center justify-center h-full text-center px-6">
+          <div>
             <div className="w-20 h-20 bg-orange-700 rounded-full flex items-center justify-center mx-auto mb-6">
               <Building className="w-10 h-10 text-yellow-400" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
               Construction Services
             </h1>
-            <p className="text-xl text-orange-100 max-w-3xl mx-auto mb-8">
+            <p className="text-lg md:text-xl text-orange-100 max-w-3xl mx-auto mb-4">
               Building your vision into reality with quality craftsmanship,
               professional management, and attention to detail in every project
               we undertake.

@@ -113,40 +113,42 @@ export default function CyberServices() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative h-[36rem] flex items-center justify-center text-white overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center "
-        style={{
-          backgroundImage: `url(${officeImg})`,
-          opacity: 0.9,
-          zIndex: 0,
-        }}
-      ></div>
+      {/* Hero Section */}
+      <section className="relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] w-full overflow-hidden">
+        {/* Background Image */}
+        <img
+          src={officeImg}
+          alt="Cyber Services Hero"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
 
-        <div className="absolute inset-0 bg-black opacity-40 mix-blend-multiply"></div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/40"></div>
 
-        <div className="relative z-10 text-center px-4 max-w-3xl">
-          <div className="w-20 h-20 bg-blue-700 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Laptop className="w-16 h-16 text-yellow-400" />
+        {/* Content */}
+        <div className="relative z-10 flex items-center justify-center h-full text-center px-4">
+          <div>
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+              Cyber & Office Services
+            </h1>
+            <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto mb-4">
+              Get all your printing, photocopying, lamination, and online
+              service needs handled quickly and professionally. We make your
+              everyday tasks easier and faster.
+            </p>
+            <a
+              href="https://wa.me/254715825808"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                size="lg"
+                className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold"
+              >
+                Request a Service
+              </Button>
+            </a>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Cyber & Office Services
-          </h1>
-          <p className="text-xl text-blue-100 mb-8">
-            Get all your printing, photocopying, lamination, and online service
-            needs handled quickly and professionally. We make your everyday
-            tasks easier and faster.
-          </p>
-
-          <a
-            href="https://wa.me/254715825808"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
-              Request a service
-            </Button>
-          </a>
         </div>
       </section>
 
