@@ -89,7 +89,7 @@ export default function ContactSection() {
                       href="mailto:info@mesmcompany.com"
                       className="text-green-600 hover:text-green-700"
                     >
-                      info@mesmcompany.com
+                      samamwa13@gmail.com
                     </a>
                   </div>
                 </div>
