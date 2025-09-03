@@ -76,6 +76,7 @@ function Gallery() {
             <div className="w-full aspect-[4/3] relative">
               <img
                 src={item.image}
+                loading="lazy"
                 alt={item.title}
                 className="absolute inset-0 w-full h-full object-cover"
               />
