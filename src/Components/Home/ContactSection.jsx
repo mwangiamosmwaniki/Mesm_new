@@ -128,16 +128,27 @@ export default function ContactSection() {
 
             {/* Map */}
             <div className="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.9202488817878!2d36.91767914102169!3d-1.2156950956178725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f3fd80f8da691%3A0x1228d571c32cb5f1!2sACK%20St.%20Timothy%20Parish%20Githurai45!5e0!3m2!1sen!2ske!4v1740149253389!5m2!1sen!2ske"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-lg"
-              ></iframe>
+              <div className="relative w-full h-64 rounded-lg overflow-hidden">
+                <iframe
+                  src="https://maps.google.com/maps?q=-1.2150889,36.9226044&z=16&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0"
+                ></iframe>
+
+                {/* Button for directions */}
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=-1.2150889,36.9226044"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-3 right-14 bg-white px-4 py-2 rounded shadow text-sm font-semibold text-blue-600 hover:bg-blue-100"
+                >
+                  📍 Get Directions
+                </a>
+              </div>
             </div>
           </div>
 
