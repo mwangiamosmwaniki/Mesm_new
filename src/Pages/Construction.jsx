@@ -93,6 +93,7 @@ export default function Construction() {
         <img
           src={buildinBg}
           alt="Construction Services Hero"
+          loading="lazy"
           className="absolute inset-0 w-full h-full object-cover"
         />
 

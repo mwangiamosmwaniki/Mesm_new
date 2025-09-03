@@ -95,6 +95,7 @@ export default function GraphicsDesign() {
         <img
           src={designHeroBg}
           alt="Graphics Design Hero"
+          loading="lazy"
           className="absolute inset-0 w-full h-full object-cover"
         />
 

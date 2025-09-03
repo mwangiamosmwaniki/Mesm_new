@@ -105,6 +105,7 @@ export default function Entertainment() {
         <img
           src={bgImage}
           alt="Entertainment Hero"
+          loading="lazy"
           className="absolute inset-0 w-full h-full object-cover"
         />
 

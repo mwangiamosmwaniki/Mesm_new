@@ -113,12 +113,12 @@ export default function CyberServices() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      {/* Hero Section */}
       <section className="relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] w-full overflow-hidden">
         {/* Background Image */}
         <img
           src={officeImg}
           alt="Cyber Services Hero"
+          loading="lazy"
           className="absolute inset-0 w-full h-full object-cover"
         />
 
